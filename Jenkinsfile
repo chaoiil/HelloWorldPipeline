@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Configuration') {
             steps {
-                echo 'Configuration de l'environnement...'
+                echo 'Configuration environnement...'
                 sh 'pip install -r requirements.txt' 
             }
         }
