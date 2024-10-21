@@ -2,31 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Configuration') {
+        stage('START') {
             steps {
-                echo 'Configuration environnement...'
-                sh 'pip install -r requirements.txt' 
+                echo 'Starting ....'
             }
         }
-
-        stage('Compilation') {
+        stage('BUILD') {
             steps {
-                echo 'Compilation du projet...'
-                sh 'python hello_world.py'
+                echo 'Build in progress'
             }
         }
-
-        stage('Tests') {
+        stage('TEST') {
             steps {
-                echo 'Exécution des tests...'
-                sh 'pytest tests/'
+                echo 'Testing'
             }
         }
-    }
-
-    post {
-        always {
-            echo 'Nettoyage...'
+        stage('DEPLOY') {
+            steps {
+                echo 'Deployment'
+            }
         }
     }
 }
