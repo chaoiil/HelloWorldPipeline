@@ -1,0 +1,17 @@
+stages:
+  
+- setup
+- build
+- test
+
+setup_python:
+  stage: setup
+  script: pip install -r requirements.txt
+
+build_python:
+  stage: build
+  script: python hello_world.py
+
+test_python:
+  stage: test
+  script: pytest tests/
