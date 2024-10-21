@@ -6,12 +6,18 @@ stages :
 
 setup_python:
   stage: setup
-  script: pip install -r requirements.txt
+  script: 
+- pip install -r requirements.txt
 
 build_python:
   stage: build
-  script: python hello_world.py
+  script: 
+- python hello_world.py build
 
 test_python:
   stage: test
-  script: pytest tests/
+  script: 
+- python -m unittest discover
+
+
+ 
