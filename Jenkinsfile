@@ -2,32 +2,37 @@ pipeline {
     agent any
 
     stages {
-        stage('Setup') {
+        stage('Configuration') {
             steps {
-                echo 'Configuration environnement...'
-                sh 'pip install -r requirements.txt'
+                echo 'Configuration de l'environnement...'
+                sh 'pip install -r requirements.txt' // Pour Python
+                // sh 'mvn clean install' // Pour Java (Maven)
+                // sh 'npm install' // Pour Node.js
             }
         }
 
-        stage('Build') {
+        stage('Compilation') {
             steps {
-                echo 'Build du projet...'
-                sh 'python hello_world.py'
+                echo 'Compilation du projet...'
+                sh 'python hello_world.py' // Pour Python
+                // sh 'javac HelloWorld.java && java HelloWorld' // Pour Java
+                // sh 'node hello_world.js' // Pour Node.js
             }
         }
 
-        stage('Test') {
+        stage('Tests') {
             steps {
-                echo 'Execution des tests...'
-                sh 'pytest tests/'
-
+                echo 'Exécution des tests...'
+                sh 'pytest tests/' // Pour Python
+                // sh 'mvn test' // Pour Java
+                // sh 'npm test' // Pour Node.js
             }
         }
     }
 
     post {
         always {
-            echo 'Fin...''
+            echo 'Nettoyage...'
         }
     }
 }
